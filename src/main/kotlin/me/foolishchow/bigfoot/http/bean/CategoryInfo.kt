@@ -1,5 +1,6 @@
 package me.foolishchow.bigfoot.http.bean
 
+import androidx.compose.runtime.MutableState
 import me.foolishchow.bigfoot.http.common.HtmlPage
 import org.jsoup.Jsoup
 
@@ -14,6 +15,27 @@ class CategoryInfo {
     override fun toString(): String {
         return "Cate{ id : $id , name : $name , child : ${child.toString()}}"
     }
+}
+
+fun CategoryInfo.isSelected(vararg selects: MutableState<String>): Boolean {
+    var selected = false
+    selects.forEach {
+        if(!selected && isSelected(it)){
+            selected = true
+        }
+    }
+    return selected
+}
+fun CategoryInfo.isSelected(selected: MutableState<String>): Boolean {
+    if (selected.value == id) return true
+    if (child.isNullOrEmpty()) return false
+    var select = false
+    child?.forEach { item ->
+        if (!select && item.id == selected.value) {
+            select = true
+        }
+    }
+    return select
 }
 
 val HtmlPage.toCategory: List<CategoryInfo>

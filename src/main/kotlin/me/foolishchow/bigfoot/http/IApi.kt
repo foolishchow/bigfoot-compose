@@ -2,6 +2,7 @@ package me.foolishchow.bigfoot.http
 
 import com.google.gson.annotations.SerializedName
 import me.foolishchow.bigfoot.http.bean.BaseResponse
+import me.foolishchow.bigfoot.http.bean.PluginDetail
 import me.foolishchow.bigfoot.http.bean.PluginInfo
 import retrofit2.Call
 import retrofit2.http.GET
@@ -16,6 +17,11 @@ private interface IApi {
         @Path("type") type: String
     ): Call<BaseResponse<List<PluginInfo>>>
 
+    @GET("/dl/detail/{id}/null")
+    fun detail(
+        @Path("id") id: String
+    ): Call<BaseResponse<PluginDetail>>
+
 }
 
 object Api {
@@ -24,6 +30,10 @@ object Api {
         type: String
     ): Call<BaseResponse<List<PluginInfo>>> {
         return mApi.list(type)
+    }
+
+    fun detail(id:String): Call<BaseResponse<PluginDetail>> {
+        return mApi.detail(id)
     }
 
 }

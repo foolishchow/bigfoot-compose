@@ -5,5 +5,5 @@ pluginManagement {
     }
     
 }
-rootProject.name = "untitled"
+rootProject.name = "bigfoot-compose"
 
