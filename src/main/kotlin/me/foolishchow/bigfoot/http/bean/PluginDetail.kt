@@ -68,4 +68,15 @@ class PluginDetail {
 
     @SerializedName("source_url")
     val sourceUrl:String = ""
+
+
+    @SerializedName("info1")
+    val contentDescription:String = ""
+
+
+    @SerializedName("info2")
+    val updateLog:String = ""
+
+    @SerializedName("info3")
+    val installDescription:String = ""
 }

@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.*
 import me.foolishchow.bigfoot.database.DataBase
+import me.foolishchow.bigfoot.ui.image.NetworkImage
 
 
 fun main() {
@@ -83,8 +84,20 @@ fun drawDetail() {
                 )
             }
         }
+        Row {
+            NetworkImage(
+                url = "http://wowui.178.com/data/wow/${DataBase.selectPlugin.value}/ui_logo.jpg",
+                modifier = Modifier.width(200.dp).height(140.dp)
+            )
+            DataBase.selectPluginDetail.value?.let { detail->
+                println(detail.contentDescription)
+            }
+
+        }
     }
 }
+
+
 
 
 @Composable

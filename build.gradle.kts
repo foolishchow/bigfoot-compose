@@ -27,6 +27,10 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.3.0")
     implementation("org.jsoup:jsoup:1.9.2")
+//    implementation("io.coil-kt:coil-compose:1.3.2")
+    //implementation("com.github.skydoves:landscapist-glide:1.3.5")
+
+
 //    implementation("com.google.accompanist:accompanist-flowlayout:0.17.0")
 }
 
