@@ -1,6 +1,7 @@
 package me.foolishchow.bigfoot.ui.image
 
 import androidx.compose.foundation.Image
+import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
@@ -21,6 +22,7 @@ class ImageLoader {
     init {
         TaskDispatcher().start()
         println("TaskDispatcher().start()")
+//        println(config.diskCacheTarget)
     }
 
     companion object {
@@ -75,7 +77,7 @@ fun NetworkImage(
     url: String, modifier: Modifier,
     contentScale: ContentScale = ContentScale.Inside
 ) {
-    var imageBitmap = remember { mutableStateOf<ImageBitmap?>(null) }
+    val imageBitmap = remember { mutableStateOf<ImageBitmap?>(null) }
     imageBitmap.value?.let {
         Image(
             painter = BitmapPainter(it),
