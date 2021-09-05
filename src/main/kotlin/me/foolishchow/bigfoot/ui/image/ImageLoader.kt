@@ -21,7 +21,7 @@ class ImageLoader {
     var resultListener: ((Result) -> Unit)? = null
     init {
         TaskDispatcher().start()
-        println("TaskDispatcher().start()")
+//        println("TaskDispatcher().start()")
 //        println(config.diskCacheTarget)
     }
 
@@ -87,6 +87,7 @@ fun NetworkImage(
         )
     }
     LaunchedEffect(url) {
+//        println("image => ${url}")
         ImageLoader.instance
             .loadUrl(url)
             .listen {

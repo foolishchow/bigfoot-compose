@@ -1,6 +1,7 @@
 package me.foolishchow.bigfoot.http.bean
 
 import com.google.gson.annotations.SerializedName
+import me.foolishchow.bigfoot.database.parseHtml
 
 
 /**
@@ -61,22 +62,87 @@ class PluginDetail {
 
     val version: String = ""
 
-    val author:String = ""
+    val author: String = ""
 
     @SerializedName("off_url")
-    val officeUrl :String = ""
+    val officeUrl: String = ""
 
     @SerializedName("source_url")
-    val sourceUrl:String = ""
-
+    val sourceUrl: String = ""
 
     @SerializedName("info1")
-    val contentDescription:String = ""
+    val contentDescription: String = ""
 
+    var _info1:ContentInfo? = null
+    val info1:ContentInfo
+        get() {
+            if(_info1 == null){
+                _info1 = parseHtml(contentDescription)
+            }
+            return _info1!!
+        }
 
+    var _info2:ContentInfo? = null
+    val info2:ContentInfo
+        get() {
+            if(_info2 == null){
+                _info2 = parseHtml(updateLog)
+            }
+            return _info2!!
+        }
+
+    var _info3:ContentInfo? = null
+    val info3:ContentInfo
+        get() {
+            if(_info3 == null){
+                _info3 = parseHtml(installDescription)
+            }
+            return _info3!!
+        }
     @SerializedName("info2")
-    val updateLog:String = ""
+    val updateLog: String = ""
 
     @SerializedName("info3")
-    val installDescription:String = ""
+    val installDescription: String = ""
+
+    val download: String = ""
+
+    @SerializedName("source_name")
+    val sourceName: String = ""
+    val file: FileInfo = FileInfo()
+}
+
+interface Dom {
+    val type: Int
+}
+
+class TextDom(
+    var content: String
+) : Dom {
+    override val type: Int
+        get() = 1
+}
+
+class ImageDom(
+    val src: String = "",
+    val width: Int = 0,
+    val height: Int = 0
+) : Dom {
+    override val type: Int
+        get() = 2
+}
+
+class ContentInfo {
+    var list = listOf<Dom>()
+}
+
+class FileInfo {
+    @SerializedName("file_id")
+    val fileId: String = ""
+
+    @SerializedName("file_name")
+    val fileName: String = ""
+
+    @SerializedName("size")
+    val size: String = ""
 }

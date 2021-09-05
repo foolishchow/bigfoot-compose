@@ -8,4 +8,8 @@ object Theme {
     val NavTextColor =  Color(0xff877d77)
     val NavBackground = Color(0XFF1d0f0a)
     val NavBackgroundActive = Color(0xff3e1f14)
+
+    val DetailColor = Color(0xffa99877)
+
+    val DetailContent = Color(0xFF877d77)
 }
