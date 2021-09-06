@@ -1,6 +1,5 @@
-package me.foolishchow.bigfoot
+package me.foolishchow.bigfoot.fragments
 
-import androidx.annotation.IntDef
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.PointerIcon

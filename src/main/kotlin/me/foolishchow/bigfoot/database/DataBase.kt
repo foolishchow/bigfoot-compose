@@ -7,8 +7,7 @@ import me.foolishchow.bigfoot.http.BASE_URL
 import me.foolishchow.bigfoot.http.bean.*
 import me.foolishchow.bigfoot.http.common.CommonApi
 import me.foolishchow.bigfoot.http.common.HtmlPage
-import me.foolishchow.bigfoot.nullOrBlankTo
-import me.foolishchow.bigfoot.nullTo
+import me.foolishchow.bigfoot.fragments.nullOrBlankTo
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import org.jsoup.nodes.Node
@@ -110,7 +109,7 @@ private fun parseElement(element: Node): MutableList<Dom> {
     if(element !is Element){
         if(element is TextNode){
             val text = element.text() ?: ""
-            if(!text.isBlank()){
+            if(text.isNotBlank()){
                 child.add(TextDom(text))
             }
         }
@@ -118,7 +117,6 @@ private fun parseElement(element: Node): MutableList<Dom> {
     }
 
     if (element.children().size == 0) {
-        println(element.tagName())
         if (element.tagName().lowercase(Locale.getDefault()) == "img") {
             child.add(
                 ImageDom(
@@ -129,8 +127,7 @@ private fun parseElement(element: Node): MutableList<Dom> {
             )
         } else {
             val text = element.html() ?: ""
-            if(!text.isBlank()){
-                println(element.tagName() +"   "+text)
+            if(text.isNotBlank()){
                 child.add(TextDom(text))
             }
         }

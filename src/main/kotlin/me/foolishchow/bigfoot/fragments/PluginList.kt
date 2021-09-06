@@ -1,4 +1,4 @@
-package me.foolishchow.bigfoot
+package me.foolishchow.bigfoot.fragments
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,6 +17,7 @@ import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerIcon
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import me.foolishchow.bigfoot.Theme
 import me.foolishchow.bigfoot.database.DataBase
 import java.awt.Cursor
 

@@ -17,9 +17,9 @@ fun String.toHexStr(): String {
     val md5Bytes = md5?.digest(byteArray)
     val hexValue = StringBuffer()
     for (i in md5Bytes!!.indices) {
-        val `val` = md5Bytes[i].toInt() and 0xff
-        if (`val` < 16) hexValue.append("0")
-        hexValue.append(Integer.toHexString(`val`))
+        val value = md5Bytes[i].toInt() and 0xff
+        if (value < 16) hexValue.append("0")
+        hexValue.append(Integer.toHexString(`value`))
     }
     return hexValue.toString()
 }

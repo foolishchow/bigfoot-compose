@@ -13,6 +13,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.*
 import me.foolishchow.bigfoot.database.DataBase
+import me.foolishchow.bigfoot.fragments.drawDetail
+import me.foolishchow.bigfoot.fragments.drawNavigation
+import me.foolishchow.bigfoot.fragments.drawPluginList
 
 
 fun main() {
@@ -37,16 +40,21 @@ fun main() {
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
-                Spacer(modifier = Modifier.fillMaxWidth().height(6.dp))
+                Spacer(
+                    modifier = Modifier.fillMaxWidth().height(6.dp)
+                )
                 drawTopSearch()
-                Spacer(modifier = Modifier.fillMaxWidth().height(10.dp))
+                Spacer(
+                    modifier = Modifier.fillMaxWidth().height(10.dp)
+                )
                 drawNavigation()
                 Row {
                     drawPluginList()
-                        Box(modifier = Modifier.weight(1f).fillMaxHeight()){
-                            drawDetail()
-                        }
-
+                    Box(
+                        modifier = Modifier.weight(1f).fillMaxHeight()
+                    ) {
+                        drawDetail()
+                    }
                 }
             }
         }

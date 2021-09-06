@@ -1,4 +1,4 @@
-package me.foolishchow.bigfoot
+package me.foolishchow.bigfoot.fragments
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -14,6 +14,7 @@ import androidx.compose.ui.res.useResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import me.foolishchow.bigfoot.Theme
 import me.foolishchow.bigfoot.database.DataBase
 import me.foolishchow.bigfoot.http.bean.ImageDom
 import me.foolishchow.bigfoot.http.bean.TextDom

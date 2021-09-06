@@ -5,7 +5,9 @@ import me.foolishchow.bigfoot.ui.image.cache.memory.LruCache
 import me.foolishchow.bigfoot.ui.image.helper.toHexStr
 
 class DefaultCache : Cache<String, ByteArray> {
-    var lruCache: LruCache<String, ByteArray> = LruCache((Runtime.getRuntime().totalMemory() / 5).toInt())
+    var lruCache: LruCache<String, ByteArray> = LruCache(
+        Runtime.getRuntime().totalMemory().div(5).toInt()
+    )
 
     @Synchronized
     override fun store(key: String, value: ByteArray) {
