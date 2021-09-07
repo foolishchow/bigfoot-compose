@@ -12,11 +12,11 @@ class DefaultCache : Cache<String, ByteArray> {
     @Synchronized
     override fun store(key: String, value: ByteArray) {
         if (value.isNotEmpty()) {
-            println("缓存到内存中${key}")
+            //println("缓存到内存中${key}")
             // store to memory
             if (lruCache[key.toHexStr()] == null) {
                 lruCache.put(key.toHexStr(), value)
-                println("内存中缓存的数量：${lruCache.size()}")
+                //println("内存中缓存的数量：${lruCache.size()}")
             }
             // store to disk
             if (!FileCache.exists(key.toHexStr())) {

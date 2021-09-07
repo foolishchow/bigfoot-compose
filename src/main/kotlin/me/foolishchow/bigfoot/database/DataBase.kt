@@ -2,20 +2,19 @@ package me.foolishchow.bigfoot.database
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import kotlinx.coroutines.Dispatchers.Unconfined
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import me.foolishchow.bigfoot.addon.readAddon
 import me.foolishchow.bigfoot.http.Api
 import me.foolishchow.bigfoot.http.BASE_URL
 import me.foolishchow.bigfoot.http.bean.*
 import me.foolishchow.bigfoot.http.common.CommonApi
 import me.foolishchow.bigfoot.http.common.HtmlPage
-import me.foolishchow.bigfoot.fragments.nullOrBlankTo
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Element
-import org.jsoup.nodes.Node
-import org.jsoup.nodes.TextNode
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 object DataBase {
     val selectTab = mutableStateOf(1)
@@ -88,55 +87,18 @@ object DataBase {
     }
 
 
-}
-
-
-fun parseHtml(content: String?): ContentInfo {
-    if (content == null || content.isBlank()) return ContentInfo()
-    val doc = Jsoup.parse(content)
-    val child = mutableListOf<Dom>()
-    doc.childNodes().forEach { element ->
-        child.addAll(parseElement(element))
-    }
-    return ContentInfo().apply {
-        list = child
-    }
-}
-
-private fun parseElement(element: Node): MutableList<Dom> {
-
-    val child = mutableListOf<Dom>()
-    if(element !is Element){
-        if(element is TextNode){
-            val text = element.text() ?: ""
-            if(text.isNotBlank()){
-                child.add(TextDom(text))
+     fun readAddons(){
+        GlobalScope.launch (Unconfined) {
+            var index = 0
+            while (index < 2){
+                delay(1000L)
+                index ++
             }
-        }
-        return child
-    }
-
-    if (element.children().size == 0) {
-        if (element.tagName().lowercase(Locale.getDefault()) == "img") {
-            child.add(
-                ImageDom(
-                    element.attr("src"),
-                    element.attr("width").nullOrBlankTo("0").toInt(),
-                    element.attr("height").nullOrBlankTo("0").toInt()
-                )
-            )
-        } else {
-            val text = element.html() ?: ""
-            if(text.isNotBlank()){
-                child.add(TextDom(text))
-            }
-        }
-    } else {
-        element.childNodes().forEach { el ->
-            child.addAll(parseElement(el))
+            readAddon()
         }
     }
 
 
-    return child
 }
+
+

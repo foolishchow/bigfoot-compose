@@ -13,13 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.pointerIcon
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.foolishchow.bigfoot.Theme
 import me.foolishchow.bigfoot.database.DataBase
-import java.awt.Cursor
+
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -46,7 +44,7 @@ fun drawPluginList() {
                         }
                     )
                     .padding(14.dp)
-                    .pointerIcon(PointerIcon(Cursor(Cursor.HAND_CURSOR)))
+                    .cursorPoint()
                     .clickable {
                         DataBase.selectPlugin.value = it.id
                         DataBase.getPluginDetail()
@@ -70,3 +68,6 @@ fun drawPluginList() {
 
     }
 }
+
+
+

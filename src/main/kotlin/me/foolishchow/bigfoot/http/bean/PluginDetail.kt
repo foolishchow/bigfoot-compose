@@ -1,7 +1,8 @@
 package me.foolishchow.bigfoot.http.bean
 
 import com.google.gson.annotations.SerializedName
-import me.foolishchow.bigfoot.database.parseHtml
+import me.foolishchow.bigfoot.richtext.RichTextInfo
+import me.foolishchow.bigfoot.richtext.parseHtml
 
 
 /**
@@ -73,32 +74,19 @@ class PluginDetail {
     @SerializedName("info1")
     val contentDescription: String = ""
 
-    var _info1:ContentInfo? = null
-    val info1:ContentInfo
-        get() {
-            if(_info1 == null){
-                _info1 = parseHtml(contentDescription)
-            }
-            return _info1!!
-        }
+    val info1: RichTextInfo by lazy {
+        parseHtml(contentDescription)
+    }
 
-    var _info2:ContentInfo? = null
-    val info2:ContentInfo
-        get() {
-            if(_info2 == null){
-                _info2 = parseHtml(updateLog)
-            }
-            return _info2!!
-        }
+    val info2: RichTextInfo by lazy {
+        parseHtml(updateLog)
+    }
 
-    var _info3:ContentInfo? = null
-    val info3:ContentInfo
-        get() {
-            if(_info3 == null){
-                _info3 = parseHtml(installDescription)
-            }
-            return _info3!!
-        }
+    val info3: RichTextInfo by lazy {
+        parseHtml(installDescription)
+    }
+
+
     @SerializedName("info2")
     val updateLog: String = ""
 
@@ -112,30 +100,6 @@ class PluginDetail {
     val file: FileInfo = FileInfo()
 }
 
-interface Dom {
-    val type: Int
-}
-
-class TextDom(
-    var content: String
-) : Dom {
-    override val type: Int
-        get() = 1
-}
-
-class ImageDom(
-    val src: String = "",
-    val width: Int = 0,
-    val height: Int = 0
-) : Dom {
-    override val type: Int
-        get() = 2
-}
-
-class ContentInfo {
-    var list = listOf<Dom>()
-}
-
 class FileInfo {
     @SerializedName("file_id")
     val fileId: String = ""
@@ -146,3 +110,8 @@ class FileInfo {
     @SerializedName("size")
     val size: String = ""
 }
+
+
+
+
+

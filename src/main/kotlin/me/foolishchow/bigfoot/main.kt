@@ -1,6 +1,6 @@
 package me.foolishchow.bigfoot
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -10,7 +10,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.loadImageBitmap
 import androidx.compose.ui.res.useResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.application
 import androidx.compose.ui.window.*
 import me.foolishchow.bigfoot.database.DataBase
 import me.foolishchow.bigfoot.fragments.drawDetail
@@ -20,6 +19,23 @@ import me.foolishchow.bigfoot.fragments.drawPluginList
 
 fun main() {
     DataBase.refreshCategory()
+    DataBase.readAddons()
+//    CommonApi.html("http://bigfoot.178.com/wow/update_log.html").enqueue(
+//        object :Callback<HtmlPage>{
+//            override fun onResponse(call: Call<HtmlPage>, response: Response<HtmlPage>) {
+//                println(response.body()?.content)
+//            }
+//
+//            override fun onFailure(call: Call<HtmlPage>, t: Throwable) {
+//
+//            }
+//
+//        }
+//    )
+    startApp()
+}
+
+fun startApp(){
     application {
         val windowState = rememberWindowState()
         windowState.size = WindowSize(823.dp, 615.dp)
@@ -60,7 +76,6 @@ fun main() {
         }
     }
 }
-
 
 @Composable
 fun drawTopSearch() {

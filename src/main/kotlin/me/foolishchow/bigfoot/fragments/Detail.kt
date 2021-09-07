@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.foolishchow.bigfoot.Theme
 import me.foolishchow.bigfoot.database.DataBase
-import me.foolishchow.bigfoot.http.bean.ImageDom
-import me.foolishchow.bigfoot.http.bean.TextDom
+import me.foolishchow.bigfoot.richtext.base.RichTextImage
+import me.foolishchow.bigfoot.richtext.base.RichTextText
 import me.foolishchow.bigfoot.ui.flow.FlowRow
 import me.foolishchow.bigfoot.ui.image.NetworkImage
 
@@ -151,9 +151,9 @@ fun drawDetail() {
                     else -> detail.info3
                 }
                 info.list.forEach {
-                    if (it is TextDom) {
+                    if (it is RichTextText) {
                         Text(it.content, color = Theme.DetailContent)
-                    } else if (it is ImageDom) {
+                    } else if (it is RichTextImage) {
                         NetworkImage(
                             url = it.src,
                             contentScale = ContentScale.Fit,
