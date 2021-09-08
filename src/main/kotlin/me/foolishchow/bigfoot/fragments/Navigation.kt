@@ -81,9 +81,9 @@ private fun drawCategoryItem(
                     }
                 )
         )
-        category.child?.let { child ->
-            drawDropdownMenu(child, hover, category)
-        }
+//        category.child?.let { child ->
+//            drawDropdownMenu(child, hover, category)
+//        }
     }
 }
 

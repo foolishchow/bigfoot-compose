@@ -20,8 +20,8 @@ repositories {
 dependencies {
     implementation("androidx.annotation:annotation:1.2.0")
     implementation(compose.desktop.currentOs)
-    implementation("org.koin:koin-core:2.0.1")
-    implementation("org.koin:koin-core-ext:2.0.1")
+    //implementation("org.koin:koin-core:2.0.1")
+    //implementation("org.koin:koin-core-ext:2.0.1")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.squareup.retrofit2:retrofit:2.3.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")

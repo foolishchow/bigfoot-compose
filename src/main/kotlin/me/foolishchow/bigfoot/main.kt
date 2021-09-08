@@ -15,23 +15,27 @@ import me.foolishchow.bigfoot.database.DataBase
 import me.foolishchow.bigfoot.fragments.drawDetail
 import me.foolishchow.bigfoot.fragments.drawNavigation
 import me.foolishchow.bigfoot.fragments.drawPluginList
+import me.foolishchow.bigfoot.http.common.CommonApi
+import me.foolishchow.bigfoot.http.common.HtmlPage
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 fun main() {
     DataBase.refreshCategory()
     DataBase.readAddons()
-//    CommonApi.html("http://bigfoot.178.com/wow/update_log.html").enqueue(
-//        object :Callback<HtmlPage>{
-//            override fun onResponse(call: Call<HtmlPage>, response: Response<HtmlPage>) {
-//                println(response.body()?.content)
-//            }
-//
-//            override fun onFailure(call: Call<HtmlPage>, t: Throwable) {
-//
-//            }
-//
-//        }
-//    )
+    CommonApi.html("http://bigfoot.178.com/wow/update.html").enqueue(
+        object : Callback<HtmlPage> {
+            override fun onResponse(call: Call<HtmlPage>, response: Response<HtmlPage>) {
+                println(response.body()?.content)
+            }
+
+            override fun onFailure(call: Call<HtmlPage>, t: Throwable) {
+
+            }
+        }
+    )
     startApp()
 }
 
